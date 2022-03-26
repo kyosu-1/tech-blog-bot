@@ -9,7 +9,7 @@ from utils.qiita import get_trend_items, make_text_from_trend_items
 
 
 load_dotenv()
-WEB_HOOK_URL = os.environ.get('WEBHOOK_URL')
+WEB_HOOK_URL = os.environ.get('WEBHOOK_URL ')
 
 
 def main():
