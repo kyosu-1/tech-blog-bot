@@ -3,12 +3,6 @@ name: Scheduled execution
 on:
   schedule:
     - cron: 0 0 * * *   # 毎日00:00(UTC)に実行
-  push:
-    branches: 
-      - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   execute:
