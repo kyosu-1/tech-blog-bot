@@ -14,6 +14,7 @@ WEB_HOOK_URL = os.environ.get('WEBHOOK_URL')
 
 def main():
     try:
+        print(WEB_HOOK_URL)
         json_open = open('qiita.json', 'r')
         json_load = json.load(json_open)
         trend_items = get_trend_items(json_load['tag_list'], json_load['tread_get_num'])
