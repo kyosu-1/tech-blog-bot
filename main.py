@@ -9,25 +9,20 @@ from utils.qiita import get_trend_items, make_text_from_trend_items
 
 
 load_dotenv()
+WEB_HOOK_URL = os.environ.get('WEBHOOK_URL')
 
 
-def main(webhook_url: str):
+def main():
     try:
         json_open = open('qiita.json', 'r')
         json_load = json.load(json_open)
         trend_items = get_trend_items(json_load['tag_list'], json_load['tread_get_num'])
         text = make_text_from_trend_items(trend_items)
-        post_slack_by_webhook(webhook_url, text)
+        post_slack_by_webhook(WEB_HOOK_URL, text)
     except Exception as e:
         text = f"[{e}]{traceback.format_exc()}"
-        post_slack_by_webhook(webhook_url, text)
+        post_slack_by_webhook(WEB_HOOK_URL, text)
 
 
 if __name__ == '__main__':
-    import argparse
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-w', '--webhook_url', type=str, required=True)
-    args = parser.parse_args()
-
-    main(args.webhook_url)
+    main()
