@@ -2,3 +2,4 @@ requests
 slack_sdk
 pytest
 pyyaml
+python-dotenv
